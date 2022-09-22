@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Kapcsolatok</title>
+</head>
+<body>
+    <h1>Kapcsolatok</h1>
+    <hr>
+    <ul>
+        <li><a href="/">Nyitóoldal</a></li>
+        <li><a href="/users">Felhasználók listája</a></li>
+        <li><a href="/contacts">Kapcsolatok</a></li>
+    </ul>
+    <hr></hr>
+    <form action="/message" method="post">
+        <label for="subject">E-mail:</label> <br>
+        <input type="email" name="email" id=""> <br>
+
+        <label for="subject">Tárgy:</label> <br>
+        <input type="text" name="subject" id=""> <br>
+
+        <label for="message"></label> <br>
+        <textarea name="message" id="" cols="30" rows="5"></textarea> <br>
+
+        <input type="submit" value="Üzenet elküldése" name="send">
+    </form>
+</body>
+</html>

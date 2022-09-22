@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Új készülék</title>
+</head>
+<body>
+    <h3>Új készülék felvétele</h3><hr>
+
+    <form action="/ujkeszulek" method="post">
+        <input type="text" name="gyarto" placeholder="Gyártó"><br>
+        <input type="text" name="tipus" placeholder="Típus"><br>
+        <input type="number" name="memoria" placeholder="Memória" min="0" max="9999"><br>
+        <input type="number" name="tarhely" placeholder="Tárhely" min="0" max="99999"><br>
+        <input type="text" name="oprendszer" placeholder="Operációs rendszer"><br>
+        <input type="text" name="proc" placeholder="Processzor"><br>
+        <input type="text" name="garancia" placeholder="Garancia"><br>
+        <input type="number" name="ar" placeholder="Ár" min="0" max="9999999"><br>
+        <input type="text" name="szin" placeholder="Szín"><br>
+
+        <input type="submit" value="Hozzáad">
+    </form>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "name": "nodejs-msql_gyak",
+  "version": "1.0.0",
+  "description": "t7rdá-ű",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vighakos/nodejs-msql_gyak.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vighakos/nodejs-msql_gyak/issues"
+  },
+  "homepage": "https://github.com/vighakos/nodejs-msql_gyak#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "fs": "0.0.1-security",
+    "mysql": "^2.18.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}

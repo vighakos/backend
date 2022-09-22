@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Főoldal</title>
+</head>
+<body>
+    <h1>Kapcsolat</h1>
+    <hr>
+    <ul id="menu">
+        <li><a href="/">Főoldal</a></li>
+        <li><a href="/hobbies">Hobbik</a></li>
+        <li><a href="/contacts">Kapcsolat</a></li>
+    </ul>
+    <hr>
+    <h2>Kapcsolat:</h2>
+    <ul class="list">
+        <li>
+            Email címek:
+            <ul>
+                <li>vighakos@turr.hu</li>
+                <li>vighakos@google.com</li>
+                <li>vighakos@facebook.com</li>
+                <li>vighakos@valvesoftware.com</li>
+            </ul>
+        </li>
+        <li>+3670456468465463843534</li>
+        <li>6500 Baja, Bácska tér -1.</li>
+    </ul>
+
+    <form action="/message" method="post">
+        <label for="subject">E-mail:</label> <br>
+        <input type="email" name="email" id=""> <br>
+
+        <label for="subject">Tárgy:</label> <br>
+        <input type="text" name="subject" id=""> <br>
+
+        <label for="message"></label> <br>
+        <textarea name="message" id="" cols="30" rows="5"></textarea> <br>
+
+        <input type="submit" value="Üzenet elküldése" name="send">
+    </form>
+    
+
+</body>
+</html>

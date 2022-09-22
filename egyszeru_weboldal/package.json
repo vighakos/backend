@@ -1,0 +1,27 @@
+{
+  "name": "egyszeru_weboldal",
+  "version": "1.0.0",
+  "description": "xd",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vighakos/egyszeru_weboldal.git"
+  },
+  "author": "VA",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vighakos/egyszeru_weboldal/issues"
+  },
+  "homepage": "https://github.com/vighakos/egyszeru_weboldal#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
