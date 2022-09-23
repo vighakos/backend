@@ -1,5 +1,6 @@
 npm init
 npm i express path fs mysql dotenv
+npm i -D nodemon
 
 "start": "node server.js",
 "dev": "nodemon server.js",
@@ -9,14 +10,11 @@ require('dotenv').config()
 const express = require('express'),
     path = require('path'),
     fs = require('fs'),
+    dbconfig = require('./config.js'),
     server = express(),
     port = process.env.PORT
 
 var mysql = require('mysql'),
-    pool = mysql.createPool({
-        host: process.env.DBHOST,
-        user: process.env.DBUSER,
-        database: process.env.DBNAME
-    })
+    pool = mysql.createPool(dbconfig)
 
 server.use(express.urlencoded({extended: true}))

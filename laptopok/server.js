@@ -3,7 +3,7 @@ require('dotenv').config()
 const express = require('express'),
     path = require('path'),
     fs = require('fs'),
-    dbconfig = require('./config.js')
+    dbconfig = require('./config.js'),
     server = express(),
     port = process.env.PORT
 
