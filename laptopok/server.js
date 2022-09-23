@@ -1,17 +1,14 @@
-const req = require('express/lib/request')
-const { append } = require('express/lib/response')
+require('dotenv').config()
 
 const express = require('express'),
     path = require('path'),
+    fs = require('fs'),
+    dbconfig = require('./config.js')
     server = express(),
-    port = 3000
+    port = process.env.PORT
 
 var mysql = require('mysql'),
-    pool = mysql.createPool({
-        host: 'localhost',
-        user: 'root',
-        database: '214szft_laptop'
-    })
+    pool = mysql.createPool(dbconfig)
 
 server.use(express.urlencoded({extended: true}))
 
@@ -23,7 +20,12 @@ server.get('/', (req, res) => {
 server.get('/laptopok', (req, res) => {
     pool.query(`SELECT * FROM laptopok`, (err, data) => {
         if (err) res.status(500).send(err.sqlMessage)
-        res.status(200).send(data)
+        else {
+            fs.writeFile('laptopok.csv', JSON.stringify(data), (err) => {
+                if (err) res.status(500).send(err)
+            })
+            res.status(200).send(data)
+        }                                                                                                                                                                               
     })
 })
 
@@ -83,6 +85,8 @@ server.post('/modlaptop/:id', (req, res) => {
         res.status(200).send(data)
     })
 })
+
+
 
 server.listen(port, () => {
     console.log(`Server listening on port ${port}`);
