@@ -1,20 +1,67 @@
 npm init
-npm i express path fs mysql dotenv
+npm i express path fs mysql dotenv sha1 moment
 npm i -D nodemon
 
-"start": "node server.js",
+--------------------------------------------------------
+package.json
+
+
 "dev": "nodemon server.js",
+
+--------------------------------------------------------
+server.js
+
 
 require('dotenv').config()
 
 const express = require('express'),
+    server = express(),
+    config = require('./config.js'),
     path = require('path'),
     fs = require('fs'),
-    dbconfig = require('./config.js'),
-    server = express(),
-    port = process.env.PORT
+    sha1 = require('sha1'),
+    moment = require('moment'),
+    port = config.appconfig.port
 
 var mysql = require('mysql'),
-    pool = mysql.createPool(dbconfig)
+    pool = mysql.createPool(config.dbconf)
 
 server.use(express.urlencoded({extended: true}))
+
+
+
+server.listen(port, () => {
+    console.log(`Server listening on port ${port}`);
+})
+
+--------------------------------------------------------
+.env
+
+
+DBHOST=localhost
+DBUSER=root
+DBPASS=
+DBNAME=214szft_
+PORT=3000
+
+
+--------------------------------------------------------
+config.js
+
+
+require('dotenv').config()
+
+var dbconf = {
+    host: process.env.DBHOST,
+    user: process.env.DBUSER,
+    database: process.env.DBNAME
+}
+
+module.exports = dbconf
+
+
+--------------------------------------------------------
+mysql database
+
+
+CREATE DATABASE 214szft_ DEFAULT CHARACTER SET utf8 COLLATE utf8_hungarian_ci

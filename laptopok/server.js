@@ -25,7 +25,7 @@ server.get('/laptopok', (req, res) => {
                 if (err) res.status(500).send(err)
             })
             res.status(200).send(data)
-        }                                                                                                                                                                               
+        }
     })
 })
 
