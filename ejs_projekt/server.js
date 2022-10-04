@@ -19,7 +19,6 @@ server.get('/', (req, res) => {
             res.send(data)
         })
     })
-    
 })
 
 server.listen(port, () => {
