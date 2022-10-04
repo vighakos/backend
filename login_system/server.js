@@ -1,5 +1,3 @@
-const { resourceUsage } = require('process')
-
 require('dotenv').config()
 
 const express = require('express'),
@@ -12,9 +10,15 @@ const express = require('express'),
     port = config.appconfig.port
 
 var mysql = require('mysql'),
-    pool = mysql.createPool(config.dbconf)
+    pool = mysql.createPool(config.dbconf),
+    session = require('express-session')
 
 server.use(express.urlencoded({extended: true}))
+server.use(session({
+    secret: 'asd',
+    resave: false,
+    saveUninitialized: true
+}))
 
 // USER REGISTRATION
 server.post('/reg', (req, res) => {
@@ -45,7 +49,7 @@ server.post('/reg', (req, res) => {
                         message = 'foglalt XD'
                         res.status(206).send(message)
                     } else {
-                        pool.query(`INSERT INTO users VALUES(null, ?, ?, ?, CURRENT_TIMESTAMP, null, 1)`, [userdata.name, userdata.email, sha1(userdata.pass1)], (err, results) => {
+                        pool.query(`INSERT INTO users VALUES(null, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1)`, [userdata.name, userdata.email, sha1(userdata.pass1)], (err, results) => {
                             if (err) res.status(500).send(err)
                             else {
                                 message = 'Sickers'
@@ -62,42 +66,56 @@ server.post('/reg', (req, res) => {
 
 // USER LOGIN
 server.post('/login', (req, res) => {
-    let userdata = {
-        email: req.body.email,
-        passwd: req.body.pass
-    }
-
     let message = ''
+    if (!req.session.loggedin) {
+        let userdata = {
+            email: req.body.email,
+            passwd: req.body.pass
+        }
+    
+        if (userdata.email == null || userdata.passwd == null) {
+            message = 'Nem adtál meg minden adatot!!!!!!!!'
+            res.status(206).send(message)
+        }
 
-    if (userdata.email == null || userdata.passwd == null) {
-        message = 'Nem adtál meg minden adatot!!!!!!!!'
-        res.status(206).send(message)
-    } else {
         pool.query(`SELECT * FROM users WHERE email=? AND passwd=?`, [userdata.email, sha1(userdata.passwd)], (err, results) => {
             if (err) res.status(500).send(err)
-            else {
-                if (results.length == 0) {
-                    message = 'Hibás aadatok!!!!!!!!'
-                    res.status(206).send(message)
-                } else {
-                    if (results[0].status == 0) {
-                        message = 'ki vagyb bannolva LOL XDDDDDDDD'
-                        res.status(206).send(message)
-                    } else {
-                        pool.query(`UPDATE users SET last=? WHERE id=?`, [moment(new Date()).format(), results[0].id], (err, results) => {
-                            if (err) res.status(500).send(err)
-                            else res.status(200).send(results)
-                        })
-                    }
-                }
+            if (results.length == 0) {
+                message = 'Hibás aadatok!!!!!!!!'
+                res.status(206).send(message)
             }
+            if (results[0].status == 0) {
+                message = 'ki vagyb bannolva XDDDDDDDD'
+                res.status(206).send(message)
+            }
+
+            let userdata = results
+            pool.query(`UPDATE users SET last=? WHERE id=?`, [moment(new Date()).format(), userdata.id], (err, results) => {
+                if (err) res.status(500).send(err)
+                
+                req.session.loggedin = true
+                message = 'Siekres bejel'
+                res.status(200).send(message)
+            })
         })
+    } else {
+        message = 'mán be vagyol jelenzetve'
+        res.status(203).send(message)
     }
 })
 
 // USER LOGOUT
 server.post('/logout', (req, res) => {
+    let message = ''
 
+    if (req.session.loggedin) {
+        req.session.loggedin = false
+        message = 'Siekeres kkijel'
+        res.status(200).send(message)
+    } else {
+        message = 'Nem vagy bejelentekeztve:!!!'
+        res.status(200).send(message)
+    }
 })
 
 server.listen(port, () => {
