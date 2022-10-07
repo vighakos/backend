@@ -1,0 +1,23 @@
+<%- include('header') %> 
+<h3>User registration</h3> <hr>
+<form method="post" action="">
+    <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" name="username">
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" class="form-control" name="email">
+    </div>
+    <div class="mb-3">
+        <label for="passwd1" class="form-label">Password</label>
+        <input type="password" class="form-control" name="passwd1">
+    </div>
+    <div class="mb-3">
+        <label for="passwd2" class="form-label">Password again</label>
+        <input type="password" class="form-control" name="passwd2">
+    </div><hr>
+    <button type="submit" class="btn btn-success">Register</button>
+    <a href="/" class="btn btn-primary">Back to login</a>
+</form>
+<%- include('footer') %> 

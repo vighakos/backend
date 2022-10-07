@@ -1,5 +1,5 @@
 npm init
-npm i express path fs mysql dotenv sha1 moment
+npm i express path fs mysql dotenv sha1 moment ejs express-session
 npm i -D nodemon
 
 --------------------------------------------------------
@@ -21,12 +21,19 @@ const express = require('express'),
     fs = require('fs'),
     sha1 = require('sha1'),
     moment = require('moment'),
+    ejs = require('ejs'),
     port = config.appconfig.port
 
 var mysql = require('mysql'),
-    pool = mysql.createPool(config.dbconf)
+    pool = mysql.createPool(config.dbconf),
+    session = require('express-session')
 
 server.use(express.urlencoded({extended: true}))
+server.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+}))
 
 
 
@@ -43,6 +50,7 @@ DBUSER=root
 DBPASS=
 DBNAME=214szft_
 PORT=3000
+TITLE="aaa"
 
 
 --------------------------------------------------------
@@ -57,7 +65,12 @@ var dbconf = {
     database: process.env.DBNAME
 }
 
-module.exports = dbconf
+var appconfig = {
+    port: process.env.PORT,
+    title: process.env.TITLE
+}
+
+module.exports = {dbconf, appconfig}
 
 
 --------------------------------------------------------

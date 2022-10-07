@@ -1,0 +1,15 @@
+<%- include('header') %> 
+<h3>User login</h3> <hr>
+<form method="post" action="">
+    <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="email">
+    </div>
+    <div class="mb-3">
+        <label for="passwd" class="form-label">Password</label>
+        <input type="password" class="form-control" id="passwd">
+    </div> <hr>
+    <button type="submit" class="btn btn-success">Login</button>
+    <a href="/reg" class="btn btn-primary">Registration</a>
+</form>
+<%- include('footer') %> 
