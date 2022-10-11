@@ -14,6 +14,8 @@ var mysql = require('mysql'),
     pool = mysql.createPool(config.dbconf),
     session = require('express-session')
 
+let message = ''
+
 server.use('/assets', express.static(path.join(__dirname + '/assets')))
 server.use(express.urlencoded({extended: true}))
 server.use(session({
@@ -30,7 +32,7 @@ server.get('/', (req, res) => {
 })
 
 server.get('/reg', (req, res) => {
-    ejs.renderFile('views/register.ejs', {app: config.appconfig}, (err, data) => {
+    ejs.renderFile('views/register.ejs', {app: config.appconfig, hiba: ''}, (err, data) => {
         if (err) res.status(500).send(err)
         else res.status(200).send(data)
     })
@@ -44,7 +46,7 @@ server.post('/reg', (req, res) => {
         pass2: req.body.passwd2
     }
 
-    let message = {}
+    
     if (userdata.name == null ||
         userdata.email == null ||
         userdata.pass1 == null ||
