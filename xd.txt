@@ -76,6 +76,15 @@ module.exports = {dbconf, appconfig}
 
 
 --------------------------------------------------------
+router
+
+const express = require('express'),
+    router = express.Router()
+
+module.exports = router;
+
+
+--------------------------------------------------------
 mysql database
 
 
