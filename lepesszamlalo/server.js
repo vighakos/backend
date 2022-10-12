@@ -4,15 +4,10 @@ const express = require('express'),
     server = express(),
     config = require('./config.js'),
     path = require('path'),
-    fs = require('fs'),
-    sha1 = require('sha1'),
-    moment = require('moment'),
-    ejs = require('ejs'),
     port = config.appconfig.port,
     appController = require('./controllers/appController.js'),
     userController = require('./controllers/userController.js'),
     stepdataController = require('./controllers/stepdataController.js')
-
 
 var mysql = require('mysql'),
     pool = mysql.createPool(config.dbconf),
@@ -26,7 +21,6 @@ server.use(session({
     resave: true,
     saveUninitialized: true
 }))
-
 
 server.use('/', appController)
 server.use('/users', userController)
