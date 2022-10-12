@@ -67,7 +67,9 @@ var dbconf = {
 
 var appconfig = {
     port: process.env.PORT,
-    title: process.env.TITLE
+    company: process.env.company,
+    author: process.env.author,
+    title: process.env.title
 }
 
 module.exports = {dbconf, appconfig}
