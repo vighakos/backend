@@ -1,17 +1,17 @@
-require('dotenv').config()
-
 const express = require('express'),
     server = express(),
     config = require('./config.js'),
     path = require('path'),
     port = config.appconfig.port,
+    session = require('express-session'),
     appController = require('./controllers/appController.js'),
     userController = require('./controllers/userController.js'),
     stepdataController = require('./controllers/stepdataController.js')
 
-var mysql = require('mysql'),
-    pool = mysql.createPool(config.dbconf),
-    session = require('express-session')
+server.locals.message = {
+    text: '',
+    type: 'danger'
+}
 
 server.use('/assets', express.static(path.join(__dirname + '/assets')))
 server.use('/views', express.static(path.join(__dirname + '/views')))
