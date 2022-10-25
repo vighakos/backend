@@ -1,16 +1,18 @@
-require('dotenv').config()
+require('dotenv').config();
 
-var dbconf = {
+let dbconfig = {
+    connectionLimit: process.env.DBLIMIT,
     host: process.env.DBHOST,
     user: process.env.DBUSER,
+    password: process.env.DBPASS,
     database: process.env.DBNAME
 }
 
-var appconfig = {
+let appconfig = {
     port: process.env.PORT,
-    company: process.env.company,
-    author: process.env.author,
-    title: process.env.title
+    company: process.env.COMPANY,
+    author: process.env.AUTHOR,
+    title: process.env.TITLE
 }
 
-module.exports = {dbconf, appconfig}
+module.exports = { dbconfig, appconfig }

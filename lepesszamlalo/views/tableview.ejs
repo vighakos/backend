@@ -1,0 +1,48 @@
+<%- include('header') %>
+
+    <div class="row">
+        <aside class="col-md-4">
+            <h3 class="p-3">
+                <%= user.loggedUser %>
+            </h3>
+            <%- include('nav') %>
+        </aside>
+        <section class="col-md-8">
+            <h3>Table view</h3>
+            <hr>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Date</th>
+                        <th class="text-end">Stepcount</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <% let sum = 0; 
+                    for( i=0; i< records.length; i++) {  sum += records[i].stepcount; %>
+                        <tr>
+                            <td>
+                                <%= i+1 %>.
+                            </td>
+                            <td>
+                                <%= moment(records[i].date).format('YYYY-MM-DD') %>
+                            </td>
+                            <td class="text-end">
+                                <%= records[i].stepcount %>
+                            </td>
+                        </tr>
+                        <% } %>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" class="text-end">Összesen:
+                            <strong><%= sum %></strong> lépés</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+    </div>
+
+    <%- include('footer') %>

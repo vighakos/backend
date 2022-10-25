@@ -1,31 +1,31 @@
-const express = require('express'),
-    server = express(),
-    config = require('./config.js'),
-    path = require('path'),
-    port = config.appconfig.port,
-    session = require('express-session'),
-    appController = require('./controllers/appController.js'),
-    userController = require('./controllers/userController.js'),
-    stepdataController = require('./controllers/stepdataController.js')
+const express = require('express');
+const session = require('express-session');
+const path = require('path');
+const config = require('./config.js');
+const app = express();
 
-server.locals.message = {
-    text: '',
-    type: 'danger'
-}
+const appController = require('./controllers/appController.js');
+const userController = require('./controllers/userController.js');
+const stepdataController = require('./controllers/stepdataController.js');
 
-server.use('/assets', express.static(path.join(__dirname + '/assets')))
-server.use('/views', express.static(path.join(__dirname + '/views')))
-server.use(express.urlencoded({extended: true}))
-server.use(session({
+// Middlewares
+app.use('/assets', express.static(path.join(__dirname + '/assets')));
+app.use('/views', express.static(path.join(__dirname + '/views')));
+app.use(express.urlencoded({ extended: true }));
+app.use(session({
     secret: 'secret',
     resave: true,
     saveUninitialized: true
-}))
+}));
 
-server.use('/', appController)
-server.use('/users', userController)
-server.use('/stepdata', stepdataController)
+app.locals.message = '';
+app.locals.messagetype = 'danger';
+app.locals.isMessage = false;
 
-server.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
-})
+app.use('/', appController);
+app.use('/users', userController);
+app.use('/steps', stepdataController);
+
+app.listen(config.appconfig.port, () => {
+    console.log(`Server listening on port ${config.appconfig.port}...`);
+});

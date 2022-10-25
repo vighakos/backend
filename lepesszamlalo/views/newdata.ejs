@@ -1,0 +1,30 @@
+<%- include('header') %>
+
+    <div class="row">
+        <aside class="col-md-4">
+            <h3>
+                <%= user.loggedUser %>
+            </h3>
+            <%- include('nav') %>
+        </aside>
+        <section class="col-md-8">
+            <h3>Add new stepdata</h3>
+            <hr>
+            <%- include('message') %>
+                <form action="/steps/newdata" method="post" class="col-lg-8 col-xl-6">
+                    <div class="mb-3">
+                        <label for="date" class="form-label">Date:</label>
+                        <input type="date" class="form-control" name="date" max="<%= toDay %>" value="<%= toDay %>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="stepcount" class="form-label">Stepcount:</label>
+                        <input type="number" class="form-control" name="stepcount" min="0" value="0">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mb-3">Add to database</button>
+
+                </form>
+        </section>
+    </div>
+
+    <%- include('footer') %>

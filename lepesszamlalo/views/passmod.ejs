@@ -1,0 +1,33 @@
+<%- include('header') %>
+
+    <div class="row">
+        <aside class="col-md-4">
+            <h3 class="p-3">
+                <%= user.loggedUser %>
+            </h3>
+            <%- include('nav') %>
+        </aside>
+        <section class="col-md-8">
+            <h3>Password change</h3>
+            <hr>
+            <%- include('message') %>
+                <form action="/users/passmod" method="post" class="col-lg-8 col-xl-6">
+                    <div class="mb-3">
+                        <label for="oldpass" class="form-label">Old password</label>
+                        <input type="password" class="form-control" name="oldpass">
+                    </div>
+                    <div class="mb-3">
+                        <label for="newpass1" class="form-label">New password</label>
+                        <input type="password" class="form-control" name="newpass1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="newpass2" class="form-label">New password again</label>
+                        <input type="password" class="form-control" name="newpass2">
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-3">Change my password</button>
+
+                </form>
+        </section>
+    </div>
+
+    <%- include('footer') %>

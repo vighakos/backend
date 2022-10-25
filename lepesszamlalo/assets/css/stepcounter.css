@@ -1,11 +1,34 @@
-body{
+body {
     background-color: silver;
 }
 
 .container {
-    background-color: whitesmoke;
+    background-color: white;
     box-shadow: 0 0 10px gray;
     padding: 10px;
+}
+
+header {
+    background-color: slategray;
+    text-align: center;
+    font-size: 200%;
+    height: 150px;
+    line-height: 150px;
+    color: white;
+    text-shadow: 0 0 3px black;
+}
+
+footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-size: 80%;
+    letter-spacing: 3px;
+    padding: 8px;
+}
+
+main {
+    padding: 10px 0;
 }
 
 .menu {
@@ -18,7 +41,7 @@ body{
     border-bottom: 1px dotted silver;
 }
 
-.menu li:first-child  {
+.menu li:first-child {
     border-top: 1px dotted silver;
 }
 
@@ -36,29 +59,9 @@ body{
     background-color: slategray;
     color: white;
     padding-left: 30px;
-    transition: padding-left 0.5s;
+    transition: padding 0.5s;
 }
 
-header {
-    background-color: slategray;
-    font-variant: small-caps;
-    text-align: center;
-    font-size: 200%;
-    height: 100px;
-    line-height: 100px;
-    color: aliceblue;
-    text-shadow: 0 0 3px black;
-}
-
-footer {
-    background-color: black;
-    color: antiquewhite;
-    text-align: center;
-    font-size: 80%;
-    letter-spacing: 3px;
-    padding: 8px;
-}
-
-main {
-    padding: 10px 0;
+section {
+    padding: 15px;
 }

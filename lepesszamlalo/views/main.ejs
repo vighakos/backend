@@ -1,12 +1,16 @@
-<%- include('header') %> 
+<%- include('header') %>
 
-<div class="row">
-    <aside class="col-md-4">
-        <%- include('nav') %> 
-    </aside>
-    <section class="col-md-4">
-        rfghjkm
-    </section>
-</div>
+    <div class="row">
+        <aside class="col-md-4">
+            <h3>
+                <%= user.loggedUser %>
+            </h3>
+            <%- include('nav') %>
+        </aside>
+        <section class="col-md-8">
+            <%- include('message') %>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure numquam similique ipsam! Beatae eligendi optio voluptatum, itaque inventore fuga ex eaque, minus quisquam at quia possimus cumque ipsum, distinctio enim.
+        </section>
+    </div>
 
-<%- include('footer') %> 
+    <%- include('footer') %>
