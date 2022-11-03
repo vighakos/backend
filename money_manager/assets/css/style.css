@@ -1,0 +1,67 @@
+body {
+    background-color: silver;
+}
+
+.container {
+    background-color: white;
+    box-shadow: 0 0 10px gray;
+    padding: 10px;
+}
+
+header {
+    background-color: slategray;
+    text-align: center;
+    font-size: 200%;
+    height: 150px;
+    line-height: 150px;
+    color: white;
+    text-shadow: 0 0 3px black;
+}
+
+footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-size: 80%;
+    letter-spacing: 3px;
+    padding: 8px;
+}
+
+main {
+    padding: 10px 0;
+}
+
+.menu {
+    margin: 15px 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.menu li {
+    border-bottom: 1px dotted silver;
+}
+
+.menu li:first-child {
+    border-top: 1px dotted silver;
+}
+
+.menu li a {
+    color: black;
+    display: block;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    transition: padding 0.5s;
+}
+
+.menu li a:hover {
+    background-color: slategray;
+    color: white;
+    padding-left: 30px;
+    transition: padding 0.5s;
+}
+
+section {
+    padding: 15px;
+}

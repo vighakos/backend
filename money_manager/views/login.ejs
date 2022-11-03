@@ -1,0 +1,19 @@
+<div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+    <h3 class="mt-3">Login to Money manager App</h3>
+    <hr>
+
+    <%- include('message') %>
+
+        <form action="/users/login" method="post">
+            <div class="mb-3">
+                <label for="usermail" class="form-label">E-mail address</label>
+                <input type="email" class="form-control" name="usermail">
+            </div>
+            <div class="mb-3">
+                <label for="userpass" class="form-label">Password</label>
+                <input type="password" class="form-control" name="userpass">
+            </div>
+            <button type="submit" class="btn btn-primary mb-3">Login</button>
+            <a href="/reg" class="btn btn-secondary mb-3">Registration</a>
+        </form>
+</div>
