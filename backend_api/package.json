@@ -1,26 +1,26 @@
 {
-  "name": "backend_api",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
-  "scripts": {
-    "dev": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.3",
-    "epxress": "0.0.1-security",
-    "express": "^4.18.2",
-    "express-session": "^1.17.3",
-    "fs": "0.0.1-security",
-    "moment": "^2.29.4",
-    "mysql": "^2.18.1",
-    "path": "^0.12.7"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.20"
-  }
+    "name": "api",
+    "version": "1.0.0",
+    "description": "NodeJS Backend API",
+    "main": "server.js",
+    "scripts": {
+        "dev": "nodemon server",
+        "start": "node server",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "NSZ",
+    "license": "ISC",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "dotenv": "^16.0.3",
+        "express": "^4.18.2",
+        "express-session": "^1.17.3",
+        "fs": "^0.0.1-security",
+        "moment": "^2.29.4",
+        "mysql": "^2.18.1",
+        "path": "^0.12.7"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.20"
+    }
 }
