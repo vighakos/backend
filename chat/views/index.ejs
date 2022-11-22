@@ -1,0 +1,26 @@
+<%- include('header') %>
+    <main>
+        <div class="col-lg-6 offset-lg-3 text-center">
+            <form action="/chat" method="post">
+                <h1 class="m-3">Belépés a Chat-be</h1>
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="nickname" name="nickname" placeholder="Név">
+                    <label for="nickname">Név</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <select class="form-select" id="roomname" name="roomname">
+                  <option selected>Válassz...</option>
+                  <option value="Frontend programozás">Frontend programozás</option>
+                  <option value="Backend programozás">Backend programozás</option>
+                  <option value="Fullstack programozás">Fullstack programozás</option>
+                </select>
+                    <label for="roomname">Szobanév</label>
+                </div>
+
+                <input type="submit" class="btn btn-primary btn-lg mb-3" value="Csatlakozás">
+            </form>
+        </div>
+    </main>
+    <%- include('footer') %>
