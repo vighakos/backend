@@ -1,0 +1,27 @@
+.container {
+    background-color: white;
+    box-shadow: 0 0 10px gray;
+    padding: 10px;
+}
+
+header {
+    background-color: slategray;
+    text-align: center;
+    color: white;
+    text-shadow: 0 0 2px black;
+    font-size: 200%;
+    line-height: 100px;
+}
+
+main {
+    padding: 10px;
+}
+
+footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    letter-spacing: 3px;
+    font-size: 80%;
+    padding: 10px;
+}
