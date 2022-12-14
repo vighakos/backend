@@ -4,6 +4,7 @@ const { application } = require('express'),
     cors = require('cors'),
     token = process.env.TOKEN,
     express = require('express'),
+    ejs = require('ejs'),
     { MongoClient, ServerApiVersion, ObjectId } = require('mongodb'),
     server = express(),
     port = 5000
@@ -31,12 +32,17 @@ client.connect(err => {
             .catch(err => { console.log(err); })
     });
 
-    server.get('/:table', tokencheck(), (req, res) => {
+    server.get('/:table', (req, res) => {
         let table = req.params.table
         let collection = database.collection(table)
 
         collection.find().toArray()
-            .then(results => { res.send(results) })
+            .then(results => { 
+                ejs.renderFile('public/index.ejs', {results}, (err, data) => {
+                    if (err) res.send(err)
+                    res.send(data)
+                })
+             })
             .catch(err => { console.log(err); })
     })
     
