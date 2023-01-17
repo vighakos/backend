@@ -1,10 +1,35 @@
-<h1>Blogok listája:</h1>
-<hr>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/style.css">
+    <title>cucc</title>
+</head>
+<body>
+    <h2>blog felvétel</h2>
+    <hr>
+    <form action="/blogs" method="post">
+        <h3>cím</h3>
+        <input type="text" name="title" id="title"><br>
+        <h3>leírás</h3>
+        <input type="text" name="description" id="description"><br><br>
+        <input type="submit" value="Felvesz">
+    </form>
 
-<% for (let i = 0; i < blogs.length; i++) { %>
-    <h3> cím
-        <%= blogs[i].title %>
-    </h3>
-    <%
-}
-%>
+    <h2>Blogok listája:</h2>
+    <hr>
+    <div id="blogs">
+        <% for (let i = 0; i < blogs.length; i++) { %>
+            <div class="blog">
+                <h3> <%= blogs[i].title %> </h3>
+                <p> <%= blogs[i].description %> </p>
+                
+            </div>
+            <%
+        }
+        %>
+    </div>
+</body>
+</html>

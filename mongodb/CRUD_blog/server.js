@@ -16,10 +16,7 @@ const debug = process.env.DEBUG;
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-var pug = require('pug');
-var fn = pug.compile('string of pug', options);
-var html = fn(locals);
+app.use('/assets', express.static(path.join(__dirname + '/assets')));
 
 // Image file Upload settings
 var storage = multer.diskStorage({
@@ -39,19 +36,13 @@ client.connect(err => {
     const database = client.db(process.env.DBNAME);
 
     app.get('/', (req, res) => {
-
-        axios.get('http://localhost:5000/blogs').then(function(results) {
-            console.log(results)
+        axios.get(`http://localhost:5000/blogs`).then(function(results) {
             ejs.renderFile('views/blogs.ejs', { blogs: results.data }, (err, data) => {
                 res.send(data);
             })
         });
-
-    });
-
-
-
-
+    })
+    
     // file upload
     app.post('/fileUpload', upload.single('file'), (req, res) => {
         log(req.socket.remoteAddress, `1 File uploaded to /Public/uploads (${req.file.filename}`);
@@ -142,7 +133,7 @@ client.connect(err => {
         collection.insertOne(data)
             .then(results => {
                 log(req.socket.remoteAddress, `1 record inserted to ${table} table.`);
-                res.send(results)
+                res.redirect('/')
             })
             .catch(error => {
                 log(req.socket.remoteAddress, error);
@@ -195,7 +186,8 @@ client.connect(err => {
             .catch(error => {
                 log(req.socket.remoteAddress, error);
                 res.send(error);
-            });
+            }
+        );
     });
 
     // DELETE RECORDS BY field
@@ -225,7 +217,7 @@ app.listen(port, () => {
     console.log(`Server listening on port ${port}...`);
 });
 
-// MIDDLEVARE FUNCTIONS
+// MIDDLEWARE FUNCTIONS
 
 function tokencheck() {
 
